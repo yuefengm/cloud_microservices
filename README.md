@@ -2,14 +2,6 @@
 
 # Project: Big Data Processing Toolbox
 
-### Team Member:
-    Jinhui Hong (jinhui)
-    Keaton Ma (yuefengm)
-
-### Video demo and code walk through:
-   ```
-   https://youtu.be/xUgeRXgrJ0I
-   ```
 
 ## Deployment Steps:
 
