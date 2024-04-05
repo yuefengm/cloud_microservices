@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jupyter-notebook
+  labels:
+    app: jupyter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jupyter
+  template:
+    metadata:
+      labels:
+        app: jupyter
+    spec:
+      containers:
+      - name: jupyter-notebook
+        image: gcr.io/course-project-418915/jupyter/base-notebook
+        ports:
+        - containerPort: 8888
+        args: ["start-notebook.sh", "--NotebookApp.token=''", "--NotebookApp.password=''"]
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        env:
+        - name: JUPYTER_ENABLE_LAB
+          value: "yes" # Enables JupyterLab interface by default
+        - name: NOTEBOOK_PORT
+          value: "8888"
+        - name: CHOWN_HOME
+          value: "yes"
+        - name: CHOWN_HOME_OPTS
+          value: "-R"
+        - name: GRANT_SUDO
+          value: "yes" # Grants sudo to the jupyter user, remove if not necessary
+        - name: JUPYTER_TOKEN
+          value: "" # Disables token authentication
+        - name: JUPYTER_PASSWORD
+          value: "" # Disables password authentication

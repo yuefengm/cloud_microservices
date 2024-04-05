@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  labels:
+    app: jenkins
+spec:
+  selector:
+    matchLabels:
+      app: jenkins
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      containers:
+        - image: jinhuih/my-jenkins
+          imagePullPolicy: Always
+          name: jenkins
+          ports:
+            - name: httpport
+              containerPort: 8080
+            - name: jnlpport
+              containerPort: 50000
+          command:
+            - "/usr/local/bin/jenkins.sh"
+          env:
+            - name: SONAR_HOST_IP
+              value: "34.48.37.185"
+            - name: SONAR_HOST_PORT
+              value: "9000"

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resourcemanager
+  labels:
+    app: resourcemanager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resourcemanager
+  template:
+    metadata:
+      labels:
+        app: resourcemanager
+    spec:
+      containers:
+      - name: resourcemanager
+        image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+        envFrom:
+        - configMapRef:
+            name: hadoop-env

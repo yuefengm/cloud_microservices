@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: datanode1
+  labels:
+    app: datanode1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: datanode1
+  template:
+    metadata:
+      labels:
+        app: datanode1
+    spec:
+      containers:
+      - name: datanode1
+        image: jinhuih/my-datanode:latest
+        envFrom:
+        - configMapRef:
+            name: hadoop-env
+        env:
+        - name: SERVICE_PRECONDITION
+          value: "namenode:9870"

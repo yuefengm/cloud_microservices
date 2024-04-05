@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: namenode
+  labels:
+    app: namenode
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: namenode
+  template:
+    metadata:
+      labels:
+        app: namenode
+    spec:
+      containers:
+      - name: namenode
+        image: jinhuih/my-namenode:latest
+        ports:
+        - containerPort: 9870
+          name: webui
+        - containerPort: 9000
+          name: fs
+        envFrom:
+        - configMapRef:
+            name: hadoop-env
+        env:
+        - name: HADOOP_CLUSTER_NAME
+          value: "project-14848-cluster"

@@ -1,0 +1,29 @@
+jenkins:
+  securityRealm:
+    local:
+      allowsSignup: false # Disables the ability for new users to sign up
+      users:
+        - id: admin
+          password: password
+  authorizationStrategy: unsecured # no authorization is required
+
+# Configuration for tools used within Jenkins
+tool:
+  sonarRunnerInstallation:
+    installations:
+      - name: Default
+        home: /opt/sonar-scanner
+
+# Unclassified section for various global Jenkins configurations
+unclassified:
+  sonarglobalconfiguration:
+    buildWrapperEnabled: true
+    installations:
+      - name: "TEST"
+        serverUrl: "http://${SONAR_HOST_IP}:${SONAR_HOST_PORT}" # SonarQube server URL constructed with environment variables
+        mojoVersion: "mojoVersion" # Version of the SonarQube Maven plugin if used
+        additionalProperties: ""
+        triggers:
+          skipScmCause: true # Skip builds triggered by SCM changes
+          skipUpstreamCause: true # Skip builds triggered by upstream projects
+          envVar: "envVar" # Environment variable that can be used to control SonarQube triggers

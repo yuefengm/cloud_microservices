@@ -1,0 +1,5 @@
+project_id = "course-project-418915"
+cluster_name = "project-14848-cluster"
+region = "us-east4"
+zone = "us-east4-a"
+credentials_json = "./course-project-credentials_14848.json"

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spark-master-ui
+  labels:
+    app: spark
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 35.245.167.136
+  ports:
+    - port: 8080
+      targetPort: web-ui
+  selector:
+    app: spark
+    role: master

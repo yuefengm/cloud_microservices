@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Big Data Processing Toolbox</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.container {
+  text-align: center;
+}
+.title {
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.app-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  height: 120px;
+}
+.app-button:hover {
+  transform: translateY(-5px);
+}
+.app-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: auto;
+}
+.app-name {
+  display: block;
+  margin-top: auto;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="title">Big Data Processing Toolbox</div>
+
+  <br>
+  <img src="./icons/main_page_icon.webp" alt="main_page" class="page-icon">
+
+  <div> Please click on one application that you would like to run </div>
+  <br>
+  <div class="app-grid">
+    <button class="app-button" onclick="location.href='http://34.145.245.86/:9870'">
+      <img src="./icons/hadoop.png" alt="Hadoop" class="app-icon">
+      <span class="app-name">Apache Hadoop</span>
+    </button>
+    <button class="app-button" onclick="location.href='http://35.245.167.136:8080'">
+      <img src="./icons/spark.png" alt="Spark" class="app-icon">
+      <span class="app-name">Apache Spark</span>
+    </button>
+    <button class="app-button" onclick="location.href='http://34.48.18.56:80'"> 
+      <img src="./icons/jupyter.png" alt="Jupyter" class="app-icon">
+      <span class="app-name">Jupyter Notebook</span>
+    </button>
+    <button class="app-button" onclick="location.href='http://34.85.231.5:8080'">
+      <img src="./icons/jenkins.png" alt="Jenkins" class="app-icon">
+      <span class="app-name">Jenkins</span>
+    </button>
+  </div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarqube
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 34.48.37.185
+  ports:
+  - port: 9000
+    targetPort: 9000
+  selector:
+    app: sonarqube
